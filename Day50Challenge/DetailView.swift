@@ -5,11 +5,12 @@
 //  Created by Constantin Lisnic on 14/12/2024.
 //
 
+import SwiftData
 import SwiftUI
 
 struct DetailView: View {
     var user: User
-
+    
     var body: some View {
         VStack {
             Text(user.about)
@@ -27,14 +28,21 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(
-        user: User(
-            id: UUID(), isActive: true, name: "Constantin Lisnic", age: 26,
-            company: "BT Group", email: "constantin.lisnic@bt.com",
-            address: "14 Alwyn Close", about: "Muscular and handsome",
-            registered: .now, tags: ["tag1", "tag2"],
-            friends: [
-                Friend(id: UUID(), name: "John Doe"),
-                Friend(id: UUID(), name: "Ana Lisnic"),
-            ]))
+    let user = User(
+        isActive: true,
+        name: "Constantin Lisnic",
+        age: 26,
+        company: "BT Group",
+        email: "constantin.lisnic@bt.com",
+        address: "14 Alwyn Close",
+        about: "Muscular and handsome",
+        registered: Date(),
+        tags: ["tag1", "tag2"],
+        friends: [
+            Friend(id: UUID(), name: "John Doe"),
+            Friend(id: UUID(), name: "Ana Lisnic")
+        ]
+    )
+    
+     DetailView(user: user)
 }
